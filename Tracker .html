@@ -1,4 +1,13 @@
-<!-- Splide HTML structure -->
+<!-- webflow Splide HTML structure -->
+
+
+<!--class name 
+  splide  (this class use in first div and also add id (myCustomSlider))
+  splide__track (this class use in second div if the cms used in collection list wrapper)
+  splide__list  (this class use in Third div if the cms used in collection list )
+  splide__slide (this class use in Forth div if the cms used in collection list Item )
+
+-->
 
 <!-- Splide CSS -->
 <link rel="stylesheet" 
@@ -45,7 +54,34 @@ href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.c
       pagination: false,
       focus: 'center',
       drag: 'free',
-      //autoscroll system
+      //autoscroll system```javascript
+document.addEventListener('DOMContentLoaded', function () {
+  const sliderOptions = {
+    type: 'loop',
+    perPage: 3,
+    gap: '1rem',
+    arrows: false,
+    arrowPath: 'm15.5 0.932-4.3 4.38...',
+    pagination: false,
+    focus: 'center',
+    drag: 'free',
+    autoScroll: {
+      speed: 1,
+      pauseOnHover: true,
+      pauseOnFocus: true,
+    },
+    breakpoints: {
+      900: {
+        perPage: 1,
+        arrows: true,
+      },
+    },
+  };
+
+  const slider = new Splide('#myCustomSlider', sliderOptions);
+  slider.mount({ AutoScroll: window.splide.Extensions.AutoScroll });
+});
+```
       autoScroll: {
         speed: 1,
         pauseOnHover: true,
