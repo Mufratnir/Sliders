@@ -1,0 +1,127 @@
+<!-- webflow Splide HTML structure -->
+
+<!-- Splide CSS -->
+<link rel="stylesheet" 
+href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css" />
+
+<!-- Splide Custom CSS -->
+<style>
+#myCustomSlider .splide ,
+#myCustomSlider .splide__track {
+  overflow: visible;
+  
+}
+#myCustomSlider .splide {
+  height: 566px; /* ✅ Correct height with px */
+  position: relative; /* ✅ Important for absolute arrows */
+}
+
+/* Static Splide Slide */
+#myCustomSlider .splide__slide {
+  transition: transform 0.3s ease;
+   width: 32%;!important /* ✅ Fixed width */
+   flex: 0 0 auto; /* ✅ Prevent shrinking */
+   opacity: 40%;
+   transform : scale(0.92);
+}
+
+/* Active Splide Slide */
+#myCustomSlider .splide__slide.is-active {
+  opacity: 100%;
+  z-index: 10;
+  border: 5px solid #ED2029;
+  transform : scale(1);
+}
+
+/* Common arrow style */
+.splide__arrow  {
+	width : 46px;
+  Height : 46px;
+  background : rgba(17, 17, 17, 1);
+  opacity : 100% ;
+  position: absolute;
+  top : 98%
+  
+}
+/* Left (PREV) arrow */
+.splide__arrow--prev {
+  left: 45% ; 
+}
+
+/* Right (NEXT) arrow */
+.splide__arrow--next {
+  right: 45% ; 
+}
+
+/* White arrow icon */
+.splide__arrow svg {
+  fill: #FFFFFF; 
+  width: 20px;
+  height: 20px;
+}
+
+/* Pagination bullets */
+.splide__pagination__page {
+  background: rgba(255, 255, 255, 1); /* White background */
+  border: 1px solid rgba(17, 17, 17, 1); /* Dark border */
+  width: 7px;
+  height: 7px;
+  opacity: 1;
+  margin: 5px;
+}
+
+/* Active pagination bullet */
+.splide__pagination__page.is-active {
+  background: rgba(17, 17, 17, 1); /* Dark active dot */
+  border-color: rgba(17, 17, 17, 1);
+}
+
+@media (max-width: 900px) {
+  #myCustomSlider .splide__slide {
+      opacity: 100%;
+  		z-index: 10;
+  		border: 5px solid #ED2029;
+  		transform : scale(1);
+  }
+  
+	/* Left (PREV) arrow */
+	.splide__arrow--prev {
+  		left: 20% ; 
+	}
+
+	/* Right (NEXT) arrow */
+		.splide__arrow--next {
+  		right: 20% ; 
+	}
+  /* Common arrow style */
+	.splide__arrow  {
+  	top : 98%
+	}
+}
+</style>
+
+<!-- Splide JS -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@latest/dist/js/splide-extension-auto-scroll.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#myCustomSlider', {
+      type: 'loop',
+      perPage: 3,
+      gap: '1rem',
+      arrows: true,
+      pagination: true,
+      focus: 'center',
+      drag: 'free',
+      
+      breakpoints: {
+        900: {
+          perPage: 1,
+          arrows: true,
+          pagination: true,
+        },
+      },
+    }).mount();
+  });
+</script>

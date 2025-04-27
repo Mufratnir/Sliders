@@ -1,0 +1,63 @@
+<!-- Splide HTML structure -->
+
+<!-- Splide CSS -->
+<link rel="stylesheet" 
+href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css" />
+
+<!-- Splide Custom CSS -->
+<style>
+#myCustomSlider .splide,
+#myCustomSlider .splide__track {
+  overflow: visible;
+}
+
+#myCustomSlider .splide__slide {
+  transition: transform 0.3s ease;
+   width: 32%;!important /* ✅ Fixed width */
+   flex: 0 0 auto; /* ✅ Prevent shrinking */
+}
+
+#myCustomSlider .splide__slide:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  #myCustomSlider .splide__slide {
+    padding: 1rem;
+  }
+}
+</style>
+
+<!-- Splide JS -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@latest/dist/js/splide-extension-auto-scroll.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#myCustomSlider', {
+      type: 'loop',
+      perPage: 3,
+      gap: '1rem',
+      arrows: false,
+      arrowPath: 'm15.5 0.932-4.3 4.38...',
+      pagination: false,
+      focus: 'center',
+      drag: 'free',
+      //autoscroll system
+      autoScroll: {
+        speed: 1,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+      },
+      breakpoints: {
+        900: {
+          perPage: 1,
+          arrows: true,
+        },
+      },
+      //autoscroll system
+    }).mount({ AutoScroll: window.splide.Extensions.AutoScroll });
+  });
+</script>
